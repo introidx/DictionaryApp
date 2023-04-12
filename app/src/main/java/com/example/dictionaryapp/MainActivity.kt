@@ -3,6 +3,7 @@ package com.example.dictionaryapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,6 +12,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.dictionaryapp.feature_dictionary.presentation.WordInfoItem
 import com.example.dictionaryapp.feature_dictionary.presentation.WordInfoViewModel
@@ -66,7 +68,7 @@ class MainActivity : ComponentActivity() {
                             ) {
                                 items(state.wordInfoItem.size) { i ->
                                     val wordInfo = state.wordInfoItem[i]
-                                    if (i > 0) {
+                                    if  (i > 0) {
                                         Spacer(modifier = Modifier.height(8.dp))
                                     }
                                     WordInfoItem(wordInfo = wordInfo)
@@ -76,9 +78,9 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         }
-                        if (state.isLoading) {
-                            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                        }
+//                        if (state.isLoading) {
+//                            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+//                        }
                     }
                 }
             }
